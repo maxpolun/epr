@@ -1,0 +1,6 @@
+{
+  "epr": {
+    "test1": "lib/test1",
+    "test2": "this/is/test/2"
+  }
+}
