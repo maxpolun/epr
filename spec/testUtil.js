@@ -1,29 +1,9 @@
 var Promise = require('bluebird'),
     path = require('path'),
     fs = require('fs'),
-    spawn = require('child_process').spawn
+    spawn = require('../lib/spawn')
 
 Promise.longStackTraces(true)
-
-function shellout(cmd, args, options) {
-  return new Promise(function shelloutPromise(resolve, reject){
-    var process = spawn(cmd, args, options),
-        stdout = '', 
-        stderr = ''
-    process.stdout.on('data', function concatData(chunk){
-      stdout += chunk.toString()
-    })
-    process.stderr.on('data', function concatErr(chunk){
-      stdout += chunk.toString()
-    })
-    process.on('close', function processClosed(code){
-      if(code === 0) {
-        return resolve(stdout)
-      }
-      reject({code: code, stderr: stderr})
-    })
-  })
-}
 
 function exists(path) {
   return new Promise(function fileExists(resolve){
@@ -32,16 +12,16 @@ function exists(path) {
 }
 
 function copyDir(src, dest) {
-  return shellout('cp', ['-R', src, dest])
+  return spawn('cp', ['-R', src, dest])
 }
 
 function clearDir(dir) {
-  return shellout('rm', ['-rf', dir])
+  return spawn('rm', ['-rf', dir])
 }
 
 function runProgram(fixturePath, args) {
   var cmdArgs = [path.join(__dirname, '..', 'main.js')].concat(args||[])
-  return shellout('node', cmdArgs, {
+  return spawn('node', cmdArgs, {
     cwd: fixturePath
   })
 }

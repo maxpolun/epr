@@ -30,4 +30,9 @@ describe('spawn', function(){
       expect(result.code).toEqual(45)
     })
   })
+  pit('should accept options', function(){
+    return spawn('/bin/pwd', [], {cwd: __dirname + '/util'}).then(function(result){
+      expect(result.stdout).toEqual(__dirname + '/util\n')
+    })
+  })
 })
