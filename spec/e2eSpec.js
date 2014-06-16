@@ -8,7 +8,7 @@ describe('epr', function(){
       console.log(cmdOutput)
       return testUtil.fixtureFilesExist([
           'node_modules/test1/test1.json',
-          'node_modules/this/is/test/2/test2.js'
+          'node_modules/test2/test2.js'
         ])
     })
   })

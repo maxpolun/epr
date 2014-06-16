@@ -38,8 +38,13 @@ function runInFixture(fixture) {
 
 module.exports.runInFixture = runInFixture
 
+function prependFixturePath(file) {
+  return path.join(__dirname, 'fixture', file)
+}
+
 function fixtureFilesExist(files) {
-  return Promise.all(files.map(exists)).then(function checkExists(results){
+  return Promise.all(files.map(prependFixturePath).
+                           map(exists)).then(function checkExists(results){
     results.forEach(function(exists, i){
       if(!exists) {
         throw "File does not exist: " + files[i]
