@@ -26,6 +26,5 @@ function ensureNodeModulesExists() {
 ensureNodeModulesExists().then(readPackage).then(function parse(packageStr){
   return parsePackage(packageStr)
 }).then(function createSymlinks(linkMapping){
-  console.log(linkMapping)
   return Promise.all(_.map(linkMapping, makeLink))
 })
