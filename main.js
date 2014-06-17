@@ -7,15 +7,18 @@ var readPackage = require('./lib/readPackage'),
     _ = require('lodash'),
     Promise = require('bluebird')
 
-function makeLink(srcpath, name) {
-  var src = path.join('..', srcpath)
-  return spawn('ln', ['-s', src, name], {cwd: 'node_modules'})
+var symlink = Promise.promisify(fs.symlink)
+
+function makeLink(src, dest) {
+  var srcPath = path.resolve(src),
+      destPath = path.join(process.cwd(), 'node_modules', dest)
+  return symlink(srcPath, destPath, 'dir')
 }
 
 function ensureNodeModulesExists() {
   return new Promise(function promiseMkdir(resolve, reject){
     fs.mkdir(path.join(process.cwd(), 'node_modules'), function resolveMkdir(err){
-      if(err) {
+      if(err && err.code !== 'EEXIST') {
         reject(err)
       }
       resolve()
