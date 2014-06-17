@@ -6,7 +6,7 @@ var readPackage = require('./lib/readPackage'),
 
 
 function entangle() {
-  readPackage().then(function parse(packageStr){
+  readPackage(process.cwd()).then(function parse(packageStr){
     return parsePackage(packageStr)
   }).then(function createSymlinks(linkMapping){
     epr.entangle(process.cwd(), linkMapping)
