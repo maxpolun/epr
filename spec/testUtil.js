@@ -19,20 +19,28 @@ function clearDir(dir) {
   return spawn('rm', ['-rf', dir])
 }
 
-function runProgram(fixturePath, args) {
+function runProgram(args) {
   var cmdArgs = [path.join(__dirname, '..', 'main.js')].concat(args||[])
   return spawn('node', cmdArgs, {
-    cwd: fixturePath
+    cwd: path.join(__dirname, 'fixture')
   })
 }
 
-function runInFixture(fixture) {
-  var usedFixtureDir = path.join(__dirname, 'fixture-templates', fixture),
+module.exports.runProgram = runProgram
+
+function createFixture(fixtureName) {
+  var usedFixtureDir = path.join(__dirname, 'fixture-templates', fixtureName),
       fixturePath = path.join(__dirname, 'fixture')
   return clearDir(fixturePath).then(function copyFixture() {
     return copyDir(usedFixtureDir, fixturePath)
-  }).then(function runMain(){
-    return runProgram(fixturePath)
+  })
+}
+
+module.exports.createFixture = createFixture
+
+function runInFixture(fixtureName) {
+  return createFixture(fixtureName).then(function runMain(){
+    return runProgram()
   })
 }
 
@@ -54,3 +62,16 @@ function fixtureFilesExist(files) {
 }
 
 module.exports.fixtureFilesExist = fixtureFilesExist
+
+function fixtureFilesNotExist(files) {
+  return Promise.all(files.map(prependFixturePath).
+                           map(exists)).then(function checkExists(results){
+    results.forEach(function(exists, i){
+      if(exists) {
+        throw "File exists: " + files[i]
+      }
+    })
+  })
+}
+
+module.exports.fixtureFilesNotExist = fixtureFilesNotExist

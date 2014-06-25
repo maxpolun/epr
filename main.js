@@ -13,8 +13,22 @@ function entangle() {
   })
 }
 
+function clean(){
+  readPackage(process.cwd()).then(function parse(packageStr){
+    return parsePackage(packageStr)
+  }).then(function createSymlinks(linkMapping){
+    return epr.clean(process.cwd(), linkMapping)
+  })
+}
+
+function clear(){
+  return epr.clear(process.cwd())
+}
+
 var commands = {
-  'entangle': entangle
+  entangle: entangle,
+  clean: clean,
+  clear: clear
 }
 
 function main(args) {
