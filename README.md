@@ -118,4 +118,6 @@ the origin of the concept of entanglement in quantum mechanics, and the term
 ## OS support
 
 epr will definitely run under any unix, but it has not been tested under windows.
-Any testing or PRs for windows support would be greatly appreciated.
+Any testing or PRs for windows support would be greatly appreciated. The code
+uses pure node, but some of the tests call out to the shell, and may have errors
+under windows.
