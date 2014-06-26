@@ -26,7 +26,7 @@ function clear(){
 }
 
 function help(){
-  help = 'epr: use short require paths in node\n\n' +
+  var message = 'epr: use short require paths in node\n\n' +
     'epr will create symlinks in your node_modules directory.\n' +
     '    specify the directories in your package.json using the following format\n' +
     '    "epr": {\n' +
@@ -39,7 +39,7 @@ function help(){
     '    clean: delete all symlinks in node_modules not listed in package.json\n' +
     '    clear: delete all symlinks in node_modules\n' +
     '    help: view this message'
-  console.log(help)
+  console.log(message)
 }
 
 var commands = {
