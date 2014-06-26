@@ -1,8 +1,19 @@
 {
   "name": "epr",
-  "version": "0.0.0",
-  "author": "Max Polun",
+  "version": "0.0.1",
+  "description": "A tool for making node require paths nicer",
+  "keywords": ["require", "tool"],
+  "author": "Max Polun <maxpolun@gmail.com>",
+  "bugs": {
+    "url": "https://github.com/maxpolun/epr/issues"
+  },
   "licence": "ISC",
+  "main": "lib/epr.js",
+  "bin": "./main.js",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:maxpolun/epr.git"
+  },
   "dependencies": {
     "bluebird": "^1.0.0",
     "lodash": "^2.4.1",
