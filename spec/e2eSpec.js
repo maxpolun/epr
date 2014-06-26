@@ -30,7 +30,7 @@ describe('epr', function(){
     })
   })
 
-  pit('should clear all symlinks from node_modules', function(){
+  pit('should empty all symlinks from node_modules', function(){
     return testUtil.createFixture('simple').then(function(){
       fs.mkdirSync(__dirname + '/fixture/node_modules')
       return Promise.all([
@@ -38,9 +38,8 @@ describe('epr', function(){
         symlink(__dirname + '/lib/test1', __dirname + '/fixture/node_modules/test1')
       ])
     }).then(function(){
-      return testUtil.runProgram('clear')
-    }).then(function(result){
-      console.log(result)
+      return testUtil.runProgram('empty')
+    }).then(function(){
       return testUtil.fixtureFilesNotExist([
         'node_modules/test1/test1.json',
         'node_modules/bad/package.json'

@@ -21,8 +21,8 @@ function clean(){
   })
 }
 
-function clear(){
-  return epr.clear(process.cwd())
+function empty(){
+  return epr.empty(process.cwd())
 }
 
 function help(){
@@ -45,7 +45,7 @@ function help(){
 var commands = {
   entangle: entangle,
   clean: clean,
-  clear: clear,
+  empty: empty,
   help: help
 }
 
