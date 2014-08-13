@@ -1,4 +1,4 @@
-EPR
+EPR ![travis status](https://travis-ci.org/maxpolun/epr.svg?branch=master)
 ===
 
 epr lets you use nicer require paths in your node programs. It lets you change code like this:
