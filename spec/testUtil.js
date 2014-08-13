@@ -1,7 +1,9 @@
 var Promise = require('bluebird'),
     path = require('path'),
     fs = require('fs'),
-    spawn = require('../lib/spawn')
+    execCB = require('child_process').exec
+
+var exec = Promise.promisify(execCB)
 
 Promise.longStackTraces(true)
 
@@ -12,16 +14,16 @@ function exists(path) {
 }
 
 function copyDir(src, dest) {
-  return spawn('cp', ['-R', src, dest])
+  return exec(['cp', '-R', src, dest].join(' '))
 }
 
 function clearDir(dir) {
-  return spawn('rm', ['-rf', dir])
+  return exec(['rm', '-rf', dir].join(' '))
 }
 
 function runProgram(args) {
-  var cmdArgs = [path.join(__dirname, '..', 'main.js')].concat(args||[])
-  return spawn('node', cmdArgs, {
+  var cmdArgs = ['node', path.join(__dirname, '..', 'main.js')].concat(args||[]).join(' ')
+  return exec(cmdArgs, {
     cwd: path.join(__dirname, 'fixture')
   })
 }

@@ -66,10 +66,9 @@ module.exports = function(grunt) {
 
   grunt.loadNpmTasks('eslint-grunt')
   grunt.loadNpmTasks('grunt-contrib-watch')
-  grunt.loadNpmTasks('grunt-nodemon')
   grunt.loadNpmTasks('grunt-node-inspector')
   grunt.loadNpmTasks('grunt-concurrent')
-  
+
   grunt.registerMultiTask('spec', 'Run node jasmine specs', function(){
     var done = this.async();
     var jasmineLib = require('minijasminenode');

@@ -1,7 +1,6 @@
 'use strict'
 require('jasmine2-pit')
 var testUtil = require('./testUtil'),
-    spawn = require('../lib/spawn'),
     fs = require('fs'),
     Promise = require('bluebird')
 

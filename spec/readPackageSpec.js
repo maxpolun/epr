@@ -10,7 +10,7 @@ describe('readPackage', function(){
     return readPackage(__dirname).then(function(){
       throw 'should throw when no package.json present'
     }, function(){
-      return true
+      // this should always be executed
     })
   })
 })
