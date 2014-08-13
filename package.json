@@ -27,5 +27,8 @@
     "grunt-node-inspector": "^0.1.2",
     "jasmine2-pit": "^0.1.0",
     "minijasminenode": "^1.0.0"
+  },
+  "scripts": {
+    "test": "grunt spec"
   }
 }
