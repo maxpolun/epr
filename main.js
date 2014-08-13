@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 'use strict'
 var readPackage = require('./lib/readPackage'),
     parsePackage = require('./lib/parsePackage'),
