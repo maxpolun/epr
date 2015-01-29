@@ -53,8 +53,13 @@ function prependFixturePath(file) {
 }
 
 function fixtureFilesExist(files) {
-  return Promise.all(files.map(prependFixturePath).
-                           map(exists)).then(function checkExists(results){
+  return Promise.all(files.
+          map(prependFixturePath).
+          map(function(file){
+            console.log('Looking for file', path.resolve(file))
+            return file
+          }).
+          map(exists)).then(function checkExists(results){
     results.forEach(function(exists, i){
       if(!exists) {
         throw "File does not exist: " + files[i]
@@ -66,8 +71,9 @@ function fixtureFilesExist(files) {
 module.exports.fixtureFilesExist = fixtureFilesExist
 
 function fixtureFilesNotExist(files) {
-  return Promise.all(files.map(prependFixturePath).
-                           map(exists)).then(function checkExists(results){
+  return Promise.all(files.
+          map(prependFixturePath).
+          map(exists)).then(function checkExists(results){
     results.forEach(function(exists, i){
       if(exists) {
         throw "File exists: " + files[i]
