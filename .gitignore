@@ -3,3 +3,4 @@ node_modules/
 _specRunner.html
 .grunt/
 spec/fixture/
+.tern-port
