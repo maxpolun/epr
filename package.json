@@ -1,6 +1,6 @@
 {
   "name": "epr",
-  "version": "1.0.0-pre1",
+  "version": "1.0.0",
   "description": "A tool for making node require paths nicer",
   "keywords": ["require", "tool", "polunware"],
   "author": "Max Polun <maxpolun@gmail.com>",

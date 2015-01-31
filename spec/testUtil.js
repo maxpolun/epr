@@ -56,7 +56,6 @@ function fixtureFilesExist(files) {
   return Promise.all(files.
           map(prependFixturePath).
           map(function(file){
-            console.log('Looking for file', path.resolve(file))
             return file
           }).
           map(exists)).then(function checkExists(results){
