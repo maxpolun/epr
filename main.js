@@ -44,7 +44,7 @@ function help(){
     '    clean: delete all symlinks in node_modules not listed in package.json\n' +
     '    clear: delete all symlinks in node_modules\n' +
     '    help: view this message\n' +
-    '    version: print versionof epr\n' + 
+    '    version: print versionof epr\n' +
     'FLAGS:\n' +
     '    -v, --verbose: print verbose messages'
   console.log(message)

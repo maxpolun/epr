@@ -2,7 +2,11 @@
   "name": "epr",
   "version": "1.0.0",
   "description": "A tool for making node require paths nicer",
-  "keywords": ["require", "tool", "polunware"],
+  "keywords": [
+    "require",
+    "tool",
+    "polunware"
+  ],
   "author": "Max Polun <maxpolun@gmail.com>",
   "bugs": {
     "url": "https://github.com/maxpolun/epr/issues"
@@ -24,10 +28,10 @@
     "grunt": "^0.4.2",
     "grunt-concurrent": "~0.4.3",
     "grunt-contrib-watch": "^0.5.3",
-    "jasmine2-pit": "^0.2.0",
-    "minijasminenode2": "^1.0.0"
+    "jasmine": "^2.4.1",
+    "jasmine2-pit": "^0.2.0"
   },
   "scripts": {
-    "test": "minijasminenode2 spec/*Spec.js"
+    "test": "jasmine"
   }
 }
