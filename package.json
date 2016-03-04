@@ -15,16 +15,15 @@
     "url": "git@github.com:maxpolun/epr.git"
   },
   "dependencies": {
-    "bluebird": "^2.0.0",
-    "lodash": "^2.4.1",
-    "minimist": "^0.1.0"
+    "bluebird": "^3.3.3",
+    "lodash": "^4.6.1",
+    "minimist": "^1.2.0"
   },
   "devDependencies": {
     "eslint-grunt": "^0.4.1",
     "grunt": "^0.4.2",
     "grunt-concurrent": "~0.4.3",
     "grunt-contrib-watch": "^0.5.3",
-    "grunt-node-inspector": "^0.1.2",
     "jasmine2-pit": "^0.2.0",
     "minijasminenode2": "^1.0.0"
   },
